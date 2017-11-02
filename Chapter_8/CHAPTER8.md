@@ -1,6 +1,6 @@
-<h1 style="text-align: center;"> chapter 8 </h1>
+<h1 align:"center"> chapter 8 </h1>
 
-<h2 style="text-align: center;"> Debugging the memory allocator </h2>
+<h2 align:"center"> Debugging the memory allocator </h2>
 
 To understand how the memory allocator works let us understand by using an example of how
 lists are created. The example holds good for other memory objects as well. Open the file
