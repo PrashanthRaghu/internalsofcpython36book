@@ -17,7 +17,6 @@ are written in python and act as the building base of applications.
 ## Setting up PyPy
 
 ## Download PyCharm :
-![img](img/PyCharm.png)
 
 ### [https://www.jetbrains.com/pycharm/download/#section=linux](https://www.jetbrains.com/pycharm/download/#section=linux)
  
@@ -26,6 +25,8 @@ are written in python and act as the building base of applications.
 ### $git clone [https://bitbucket.org/pypy/pypy](https://bitbucket.org/pypy/pypy)
 
 ## Import pypy into PyCharm:
+![img](img/PyCharm.png)
+
 
 ## What is PyPy ?
 
