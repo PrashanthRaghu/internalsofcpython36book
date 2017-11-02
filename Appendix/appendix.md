@@ -17,6 +17,7 @@ are written in python and act as the building base of applications.
 ## Setting up PyPy
 
 ## Download PyCharm :
+![img](img/PyCharm.png)
 
 ### [https://www.jetbrains.com/pycharm/download/#section=linux](https://www.jetbrains.com/pycharm/download/#section=linux)
  
