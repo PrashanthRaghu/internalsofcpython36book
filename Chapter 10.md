@@ -1,7 +1,7 @@
-<center>**Chapter 10**</center>
+<center>#Chapter 10</center>
 
 
-<center>**Python optimizations**</center>
+<center>#Python optimizations</center>
 
 In this chapter let us study about the optimizations performed by python
 and what is the programmers role.
