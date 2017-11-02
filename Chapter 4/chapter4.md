@@ -8,19 +8,20 @@ This function takes the root node of the parse tree as the input and produces th
 In this line it calls the function _sdl_seq_new_ to generate the Abstract Syntax Definition Language sequence for the generated parse tree.  I shall paste a piece of code for reference.
 
 
-Before we understand this piece of code we need to understand some _macros_ useful for iterating parse trees,
-``` CHILD(node *, int) ```
-Returns the nth child of the node using zero-offset indexing
+Before we understand this piece of code we need to understand some _macros_ useful for iterating parse trees, <br /> 
+
+``` CHILD(node *, int) ``` 
+Returns the nth child of the node using zero-offset indexing  <br /> 
 ``` RCHILD(node *, int) ```
 Returns the nth child of the node from the right side. Index is negative number.
 ``` NCH(node *) ```
-Number of children the node has
+Number of children the node has <br /> 
 ``` STR(node *) ```
-String representation of the node; e.g., will return : for a COLON token 
+String representation of the node; e.g., will return : for a COLON token  <br /> 
 ``` TYPE(node *) ```
 The type of node as specified in _Include/graminit.h_
 ``` REQ(node *, TYPE) ```
-Assert that the node is the type that is expected
+Assert that the node is the type that is expected <br /> 
 ``` LINENO(node *) ```
 Retrieve the line number of the source code that led to the creation of the parse rule ; defined in _Python/ast.c_
 
