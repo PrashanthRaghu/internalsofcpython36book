@@ -1,6 +1,6 @@
-<p style="text-align: center;"># chapter 8</p>
+<h1 style="text-align: center;"> chapter 8 </h1>
 
-<p style="text-align: center;">## Debugging the memory allocator</p>
+<h2 style="text-align: center;"> Debugging the memory allocator </h2>
 
 To understand how the memory allocator works let us understand by using an example of how
 lists are created. The example holds good for other memory objects as well. Open the file
@@ -55,15 +55,15 @@ struct arena_object {
 * allocated pools.
 */
 
-uint nfreepools;
+    uint nfreepools;
 
 /* The total number of pools in the arena, whether or not available. */
 
-uint ntotalpools;
+    uint ntotalpools;
 
 /* Singly-linked list of available pools. */
 
-struct pool_header* freepools;
+    struct pool_header* freepools;
 
 /* Whenever this arena_object is not associated with an allocated
 * arena , the nextarena member is used to link all unassociated
@@ -80,8 +80,8 @@ struct pool_header* freepools;
 * are both meaningless in this case.
 */
 
-struct arena_object* nextarena;
-struct arena_object* prevarena;
+    struct arena_object* nextarena;
+    struct arena_object* prevarena;
 }; 
 
 ```
@@ -105,18 +105,18 @@ For that we need to understand two important macros Py_INCREF and Py_DECREF.
 ```python
 
 #define Py_INCREF(op) (                      \
-_Py_INC_REFTOTAL _Py_REF_DEBUG_COMMA         \
-((PyObject*)(op))-> ob_refcnt ++)
+    _Py_INC_REFTOTAL _Py_REF_DEBUG_COMMA         \
+    ((PyObject*)(op))->ob_refcnt++)
 
 #define Py_DECREF(op)                        \
-do {
+    do {
                                                 \
-if ( _Py_DEC_REFTOTAL _Py_REF_DEBUG_COMMA       \
---(( PyObject *)( op))-> ob_refcnt != 0)        \
-_Py_CHECK_REFCNT(op)                            \
-else                                            \
-_Py_Dealloc((PyObject *)( op));               \
-} while (0)
+        if ( _Py_DEC_REFTOTAL _Py_REF_DEBUG_COMMA       \
+        --((PyObject*)(op))->ob_refcnt != 0)        \
+            _Py_CHECK_REFCNT(op)                            \
+        else                                            \
+            _Py_Dealloc((PyObject *)(op));               \
+       } while (0)
 
 ```
 
