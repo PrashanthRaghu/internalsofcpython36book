@@ -69,7 +69,9 @@ Let us debug back into the function symtable_visit_stmt which is defined in Pyth
 on line number 1128.
 Let us insert a breakpoint on line number 1135 and observe how the debugger gets trapped.
 Observe the kind of statement from the screenshot below.
-![alt text](pics/pic1.png)
+
+![alt text](img/chap4_01.png)
+
 Let us insert a breakpoint on line number 1056 and observe the entries into the symbol table.
 We observe that there is a call to the macro VISIT_SEQ which internally calls the function
 symtable_visit_expr which is defined in the same file on line number 1387. Here we observe
