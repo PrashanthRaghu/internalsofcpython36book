@@ -1,5 +1,5 @@
-<center> # Chapter 9</center>
-<center>## Debugging python threads and sockets</center>
+# Chapter 9
+## Debugging python threads and sockets
 ### 9.1 Python threads
 Let us dwelve deeper into how python threads are implemented in linux. Open the file
 Python/thread.c and observe how different headers are included based on the implementation
