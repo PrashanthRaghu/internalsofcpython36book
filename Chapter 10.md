@@ -1,17 +1,19 @@
-<center>
-**Chapter 10**
-</center>
+<center>**Chapter 10**</center>
 
 
-<center>
-**Python optimizations**
-</center>
+<center>**Python optimizations**</center>
 
 In this chapter let us study about the optimizations performed by python
 and what is the programmers role.
 
-Create a sample file test.py with the following contents: \~~\~~ if not
-100: print "1000" else: print "100" \~~\~~ In the debug configurations
+Create a sample file test.py with the following contents: 
+```
+if not 100:
+    print "1000" 
+else:
+    print "100" 
+```    
+In the debug configurations
 add the following arguments:
 
 <p>
