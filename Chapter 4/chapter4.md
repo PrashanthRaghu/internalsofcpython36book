@@ -11,30 +11,46 @@ In this line it calls the function _sdl_seq_new_ to generate the Abstract Syntax
 Before we understand this piece of code we need to understand some _macros_ useful for iterating parse trees, <br /> 
 
 ``` CHILD(node *, int) ``` 
+
+
 Returns the nth child of the node using zero-offset indexing  <br /> 
 
 
 ``` RCHILD(node *, int) ```
+
 
 Returns the nth child of the node from the right side. Index is negative number. <br />
 
 
 ``` NCH(node *) ```
 
+
+
 Number of children the node has <br /> 
+
+
 ``` STR(node *) ```
 
+
 String representation of the node; e.g., will return : for a COLON token  <br /> 
+
 
 ``` TYPE(node *) ```
 
 The type of node as specified in _Include/graminit.h_  <br /> 
 
+
+
 ``` REQ(node *, TYPE) ```
+
+
 
 Assert that the node is the type that is expected <br /> 
 
+
 ``` LINENO(node *) ```
+
+
 
 Retrieve the line number of the source code that led to the creation of the parse rule ; defined in _Python/ast.c_  <br /> 
 
