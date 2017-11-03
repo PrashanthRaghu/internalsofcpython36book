@@ -1,6 +1,6 @@
 # Chapter 2
 # Debugging the parser
-2.1 Debugging the parser
+## 2.1 Debugging the parser
 
 Before we set into looking into how the python parser works let us create a sample python file
 called test.py in root folder of python source with the following contents.
@@ -86,7 +86,7 @@ At this stage I would suggest you to follow the same for the other tokens â€˜=â€
 how they are added into the parse tree.
 
 
-2.2 Generation of the grammar
+## 2.2 Generation of the grammar
 
 
 The textual representation of the grammar is present in the file Grammar/Grammar. It is written
