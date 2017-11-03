@@ -1,6 +1,7 @@
 # Chapter 2
 # Debugging the parser
 2.1 Debugging the parser
+
 Before we set into looking into how the python parser works let us create a sample python file
 called test.py in root folder of python source with the following contents.
 
@@ -38,18 +39,18 @@ program mode and later shift to the interactive mode in the later parts of the b
 ```c
 int
 PyRun_AnyFileExFlags(FILE *fp, const char *filename, int closeit,
- PyCompilerFlags *flags)
+                 PyCompilerFlags *flags)
 {
- if (filename == NULL)
- filename = "???";
- if (Py_FdIsInteractive(fp, filename)) {
- int err = PyRun_InteractiveLoopFlags(fp, filename, flags);
- if (closeit)
- fclose(fp);
- return err;
+   if (filename == NULL)
+      filename = "???";
+   if (Py_FdIsInteractive(fp, filename)) {
+      int err = PyRun_InteractiveLoopFlags(fp, filename, flags);
+      if (closeit)
+         fclose(fp);
+      return err;
  }
- else
- return PyRun_SimpleFileExFlags(fp, filename, closeit, flags);
+    else
+      return PyRun_SimpleFileExFlags(fp, filename, closeit, flags);
 }
 ```
 
@@ -86,6 +87,8 @@ how they are added into the parse tree.
 
 
 2.2 Generation of the grammar
+
+
 The textual representation of the grammar is present in the file Grammar/Grammar. It is written
 in yacc and I would suggest you to go through it. I will skip the explanation here as it is fairly
 simple to do it. The numerical representation of the grammar is present in the file
@@ -97,11 +100,12 @@ application and open the python shell in the eclipse debugger as shown below:
 ![](images/3.png)
 
 Add a breakpoint on line number 243 on the file parser.c.
+
 In the debug console type the statement:
 
 ```c
 >>> class c:
- pass
+        pass
  ```
 Once we enter the following class definition, we observe that the debugger gets trapped. Let us
 observe the state of the dfa. It is single_input as shown below:
@@ -114,7 +118,10 @@ compound_stmt as shown below:
 ![](images/5.png)
 
  Run through the debugger loop once again, we observe the value of the dfa is classdef as shown below: 
+ 
  ![](images/6.png)
+ 
+ 
  This is exactly how the dfa is defined in the file Grammar/Grammar. You can find out how the 
  numerical values are mapped in the file graminit.c where the dfas are defined as an array. 
  
