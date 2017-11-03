@@ -8,7 +8,7 @@ a=100
 
 To your debugging configuration in eclipse pass the argument as test.py
 
-![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/1.png)
+![](images/1.png)
 
 Open the file Modules/python.c and observe the main function of python. It is a simple call to the
 function Py_Main defined in the file Modules/main.c.
@@ -16,19 +16,25 @@ Let us start debugging this function. In the initial lines we see that the appro
 depending on the command line arguments passed.
 The important code lies in line number 780 in the file Modules/main.c which is a call to the
 function run_file with the file pointer and file name as arguments.
+
 ```c
 sts = run_file(fp, filename, &cf);
 ```
+
 This internally calls the function PyRun_AnyFileExFlags in the same file on line number 320.
+
 ```c
 sts = PyRun_AnyFileExFlags(fp, filename == NULL ? "<stdin>" : filename, filename != NULL, &cf)
 != 0;
 ```
+
 Let us insert a breakpoint in line no 320 and step into the function which is in the file
 Python/pythonrun.c
+
 In this function we observe that there are 2 path flows depending on whether we are running
 python as a interactive mode or as a program. In this book we will be initially demonstrating the
 program mode and later shift to the interactive mode in the later parts of the book.
+
 ```c
 int
 PyRun_AnyFileExFlags(FILE *fp, const char *filename, int closeit,
@@ -60,11 +66,14 @@ constructor function PyAST_FromNodeObject in line number 1169. We shall cover th
 construction of the AST tree in the next chapter. Let us look in deep into the function
 PyParser_ParseFileObject which calls the function parsetok which is defined in the file
 Parser/parsetok.c in line number 184.
+
 In the function parsetok on line number 208 is the call to the function PyTokenizer_Get which is
 defined in the file tokenizer.c in the line number 1879. This function calls the function tok_get
 which is defined in the same file in line number 1363.
 Let us debug this function on line number 235 and examine the value of str.
-![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/2.png)
+
+![](images/2.png)
+
   It is the value of the character ‘a’ which is 97. Let us step debug the program and move to line
 number 1513 which loops through the character array in tok and computes the name of the
 variable and in line number 1587 returns the value NAME to signal that the current token is a
@@ -75,6 +84,7 @@ how the grammar is built.
 At this stage I would suggest you to follow the same for the other tokens ‘=’ and ‘100’ and trace
 how they are added into the parse tree.
 
+
 2.2 Generation of the grammar
 The textual representation of the grammar is present in the file Grammar/Grammar. It is written
 in yacc and I would suggest you to go through it. I will skip the explanation here as it is fairly
@@ -83,7 +93,9 @@ Python/graminit.c which contains the array of dfa’s representing the source pr
 debug how the dfas are used in construction of the parse tree. Open the source file
 Parser/parser.c line number 243 which is the function PyParser_AddToken. Start debugging the
 application and open the python shell in the eclipse debugger as shown below:
-![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/3.png)
+
+![](images/3.png)
+
 Add a breakpoint on line number 243 on the file parser.c.
 In the debug console type the statement:
 
@@ -93,12 +105,16 @@ In the debug console type the statement:
  ```
 Once we enter the following class definition, we observe that the debugger gets trapped. Let us
 observe the state of the dfa. It is single_input as shown below:
-![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/4.png)
+
+![](images/4.png)
+
 Run the debugger to go through the loop once again. Observe the value of the current dfa it is
 compound_stmt as shown below:
-![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/5.png)
+
+![](images/5.png)
+
  Run through the debugger loop once again, we observe the value of the dfa is classdef as shown below: 
- ![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/6.png)
+ ![](images/6.png)
  This is exactly how the dfa is defined in the file Grammar/Grammar. You can find out how the 
  numerical values are mapped in the file graminit.c where the dfas are defined as an array. 
  
