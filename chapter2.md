@@ -8,7 +8,7 @@ a=100
 
 To your debugging configuration in eclipse pass the argument as test.py
 
-![](https://raw.githubusercontent.com/yashasingh/internalsofcpython36book/chapter1/chapter1/img1.png)
+![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/1.png)
 
 Open the file Modules/python.c and observe the main function of python. It is a simple call to the
 function Py_Main defined in the file Modules/main.c.
@@ -64,7 +64,7 @@ In the function parsetok on line number 208 is the call to the function PyTokeni
 defined in the file tokenizer.c in the line number 1879. This function calls the function tok_get
 which is defined in the same file in line number 1363.
 Let us debug this function on line number 235 and examine the value of str.
-![](https://raw.githubusercontent.com/yashasingh/internalsofcpython36book/chapter1/chapter1/img2.png)
+![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/2.png)
   It is the value of the character ‘a’ which is 97. Let us step debug the program and move to line
 number 1513 which loops through the character array in tok and computes the name of the
 variable and in line number 1587 returns the value NAME to signal that the current token is a
@@ -83,7 +83,7 @@ Python/graminit.c which contains the array of dfa’s representing the source pr
 debug how the dfas are used in construction of the parse tree. Open the source file
 Parser/parser.c line number 243 which is the function PyParser_AddToken. Start debugging the
 application and open the python shell in the eclipse debugger as shown below:
-![](https://raw.githubusercontent.com/yashasingh/internalsofcpython36book/chapter1/chapter1/img3.png)
+![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/3.png)
 Add a breakpoint on line number 243 on the file parser.c.
 In the debug console type the statement:
 
@@ -93,12 +93,12 @@ In the debug console type the statement:
  ```
 Once we enter the following class definition, we observe that the debugger gets trapped. Let us
 observe the state of the dfa. It is single_input as shown below:
-![](https://raw.githubusercontent.com/yashasingh/internalsofcpython36book/chapter1/chapter1/img4.png)
+![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/4.png)
 Run the debugger to go through the loop once again. Observe the value of the current dfa it is
 compound_stmt as shown below:
-![](https://raw.githubusercontent.com/yashasingh/internalsofcpython36book/chapter1/chapter1/img5.png)
+![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/5.png)
  Run through the debugger loop once again, we observe the value of the dfa is classdef as shown below: 
- ![](https://drive.google.com/file/d/18ezR-IMIzU0KtQA10ykTunlMQds7X8-S/view?usp=sharing)
+ ![](https://github.com/charugupta07/internalsofcpython36book/blob/master/internalsofcpython36book/images/6.png)
  This is exactly how the dfa is defined in the file Grammar/Grammar. You can find out how the 
  numerical values are mapped in the file graminit.c where the dfas are defined as an array. 
  
