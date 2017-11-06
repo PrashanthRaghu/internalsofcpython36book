@@ -15,3 +15,4 @@ Open the debugger and insert the following statements:
         print "hello"
 >>> import thread
 >>> thread.start_new_thread(threadFunc,())
+```
