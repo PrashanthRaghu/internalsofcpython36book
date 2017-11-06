@@ -1,5 +1,6 @@
-<p align="center">
-  # Chapter 9
+<p align="center"
+# Chapter 9
+/>
 
 ## Debugging python threads and sockets
 ### 9.1 Python threads
