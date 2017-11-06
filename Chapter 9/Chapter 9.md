@@ -10,3 +10,8 @@ of the thread library in the OS. On linux we use pthreads. So open the file
 Python/thread_pthread.h.
 Insert a breakpoint on line number 172.
 Open the debugger and insert the following statements:
+```python
+>>> def threadFunc():
+        print "hello"
+>>> import thread
+>>> thread.start_new_thread(threadFunc,())
