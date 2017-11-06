@@ -48,4 +48,23 @@ double sock_timeout; /*Operation timeout in seconds 0.0 means non-blocking*/
 PyObject *weakreflist;
 
 }PySocketSockObject;
+```
+Is the main socket object. Insert a breakpoint in the file Modules/socketmodule.c
+on line number 806 and type the following statements.
+```python
+>>> import socket
+
+>>> s = socket.socket(
+
+    socket.AF_INET, socket.SOCK_STREAM)
+
+Insert a breakpoint on line number 2155 and type the following statement:
+
+>>> s.connect(("www.mcmillan-inc.com", 80))
+```
+Observe how the connection is established to the host.
+The list of socket methods is defined in the same file on line number 3061.
+Observe the mapping from the python methods to the corresponding C functions.
+I would suggest you to debug each method to understand in depth of how
+sockets are implemented in python.
 
