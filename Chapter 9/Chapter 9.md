@@ -1,4 +1,4 @@
-# Chapter 9
+<p align="center"> #Chapter 9 </p>
 ## Debugging python threads and sockets
 ### 9.1 Python threads
 Let us dwelve deeper into how python threads are implemented in linux. Open the file
